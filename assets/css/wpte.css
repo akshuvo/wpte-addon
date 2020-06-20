@@ -74,7 +74,7 @@ span.wpte-plus {
     right: 0;
 }
 
-.wpte-qty select {
+.wpte-qty select, .wpte-qty input {
     width: 100%;
     border: 0;
     background-color: #25a9b4;
@@ -152,6 +152,10 @@ span.wpte-plus {
     -webkit-transform: translate(36px, -23px);
         -ms-transform: translate(36px, -23px);
             transform: translate(36px, -23px);
+}
+
+.wpte-product-wrap .woocommerce-variation-description{
+    display: none;
 }
 
 /*Allignment*/

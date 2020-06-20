@@ -294,6 +294,10 @@ function filter_dropdown_option_html( $html, $args ) {
 function wpte_product_desc(){
 	global $product;
 
+	if( $product->get_type() != "variable" ){
+		return;
+	}
+
 	echo "<div class='wpte_product_desc'>";
 	echo $product->get_description();
 	echo "</div>";
