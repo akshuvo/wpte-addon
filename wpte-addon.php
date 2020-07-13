@@ -32,7 +32,7 @@ final class WPTE_ADDON_MAIN_CLASS {
 	 *
 	 * @var string The plugin version.
 	 */
-	const WPTE_ADDON_VERSION = '1.0.10';
+	const WPTE_ADDON_VERSION = '1.0.1012';
 
 	/**
 	 * Minimum Elementor Version
@@ -123,6 +123,12 @@ final class WPTE_ADDON_MAIN_CLASS {
 
 	    wp_register_style( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/css/wpte.css', null, WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
 	    wp_register_script( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/js/wpte.js', array('jquery'), WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
+
+	    wp_localize_script( 'wpte-addon', 'wpte_data',
+	    	array(
+	    		'wc_currency' => get_woocommerce_currency_symbol(),
+	    	)
+	    );
 
 	}
 
