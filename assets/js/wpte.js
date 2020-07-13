@@ -20,25 +20,38 @@ jQuery(function($){
 			}
 		});
 
+		$(document).on('wpte_single_cart_variation',function(){
+
+			$('.wpte-product-wrap').each(function(){
+				var selectedDiv = $(this).find('.wpte-qty select option');
+
+				if (selectedDiv.length == 1 ) {
+
+					var formData = $(this).find('form.variations_form').attr('data-product_variations');
+
+					var formDataobj = JSON.parse(formData);
+					var initPrice = formDataobj[0].display_regular_price;
+
+					$(this).find('.woocommerce-variation-price').text( wpte_data.wc_currency+initPrice );
+
+					console.log('has single variation');
+
+				}
+
+			});
+
+		});
+
 	});
 
 	$(window).load(function(){
 
-		$('.wpte-product-wrap').each(function(){
-			var selectedDiv = $(this).find('.wpte-qty select option');
+		jQuery(document).trigger('wpte_single_cart_variation');
 
-			if (selectedDiv.length == 1 ) {
+		setTimeout(function(){
+			jQuery(document).trigger('wpte_single_cart_variation');
+		},300);
 
-				var formData = $(this).find('form.variations_form').attr('data-product_variations');
-
-				var formDataobj = JSON.parse(formData);
-				var initPrice = formDataobj[0].display_regular_price;
-
-				$(this).find('.woocommerce-variation-price').text( wpte_data.wc_currency+initPrice );
-
-			}
-
-		});
 
 	});
 });

@@ -32,7 +32,7 @@ final class WPTE_ADDON_MAIN_CLASS {
 	 *
 	 * @var string The plugin version.
 	 */
-	const WPTE_ADDON_VERSION = '1.0.1012';
+	const WPTE_ADDON_VERSION = '1.0.1015';
 
 	/**
 	 * Minimum Elementor Version
