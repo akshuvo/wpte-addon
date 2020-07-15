@@ -20,10 +20,20 @@ jQuery(function($){
 			}
 		});
 
+		$(document).on('change', '.custom-qty', function() {
+
+			var thisVal = $(this).val();
+
+		    $(this).closest('.single_variation_wrap').find('input.qty').val(parseInt(thisVal));
+
+		    console.log('Qty:', thisVal);
+
+		});
+
 		$(document).on('wpte_single_cart_variation',function(){
 
 			$('.wpte-product-wrap').each(function(){
-				var selectedDiv = $(this).find('.wpte-qty select option');
+				var selectedDiv = $(this).find('.wpte-qty select#pack option');
 
 				if (selectedDiv.length == 1 ) {
 

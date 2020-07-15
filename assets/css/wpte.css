@@ -170,6 +170,27 @@ span.wpte-plus {
     margin-right: 36px;
 }
 
+/*Custom Quantity*/
+.custom-qty-li .wpte-qty {
+    width: 66px;
+    display: inline-block;
+    float: right;
+}
+
+.custom-qty-li span.wpte-minus, .custom-qty-li span.wpte-plus {
+    font-size: 14px;
+    height: 18px;
+    width: 18px;
+}
+
+.custom-qty-li .wpte-qty select, .custom-qty-li .wpte-qty input {
+    height: 18px;
+    font-size: 12px;
+    padding-left: 12px;
+}
+/*Custom Quantity*/
+
+
 @media (max-width: 767px) {
 	.wpte-product-wrap,
 	.align-left .wpte-product-wrap,

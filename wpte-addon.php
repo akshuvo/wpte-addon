@@ -32,7 +32,7 @@ final class WPTE_ADDON_MAIN_CLASS {
 	 *
 	 * @var string The plugin version.
 	 */
-	const WPTE_ADDON_VERSION = '1.0.1015';
+	const WPTE_ADDON_VERSION = '1.0.1020';
 
 	/**
 	 * Minimum Elementor Version
@@ -305,6 +305,7 @@ function wpte_product_desc(){
 	}
 
 	echo "<div class='wpte_product_desc'>";
+	echo crs_custom_cart();
 	echo $product->get_description();
 	echo "</div>";
 }
@@ -325,3 +326,25 @@ add_action( 'wp_enqueue_scripts', 'wpte_addon_inline_style', 200 );
  * Trim zeros in price decimals
  **/
  add_filter( 'woocommerce_price_trim_zeros', '__return_true' );
+
+ function crs_custom_cart(){
+ 	ob_start(); ?>
+	<ul>
+		<li class="custom-qty-li">
+			Quantity
+			<div class="wpte-qty">
+			    <span class="wpte-minus">-</span>
+			    	<select class="custom-qty" name="custom-qty">
+						<?php
+						for ($i=1; $i < 100; $i++) {
+							echo "<option>{$i}</option>";
+						}
+						?>
+			    	</select>
+			    <span class="wpte-plus">+</span>
+		    </div>
+		</li>
+	</ul>
+ 	<?php
+ 	return ob_get_clean();
+ }
