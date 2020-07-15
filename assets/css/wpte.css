@@ -157,6 +157,10 @@ span.wpte-plus {
 .wpte-product-wrap .woocommerce-variation-description{
     display: none;
 }
+.wpte-product-wrap .woocommerce-variation.single_variation {
+    display: none !important;
+}
+
 
 /*Allignment*/
 .align-left .wpte-product-wrap{
