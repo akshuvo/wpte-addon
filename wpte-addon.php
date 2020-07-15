@@ -32,7 +32,7 @@ final class WPTE_ADDON_MAIN_CLASS {
 	 *
 	 * @var string The plugin version.
 	 */
-	const WPTE_ADDON_VERSION = '1.0.1020';
+	const WPTE_ADDON_VERSION = '1.0.1023';
 
 	/**
 	 * Minimum Elementor Version
@@ -121,8 +121,13 @@ final class WPTE_ADDON_MAIN_CLASS {
 	 */
 	function register_scripts(){
 
-	    wp_register_style( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/css/wpte.css', null, WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
-	    wp_register_script( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/js/wpte.js', array('jquery'), WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
+		$var = current_time( 'timestamp' );
+
+	    //wp_register_style( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/css/wpte.css', null, WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
+	    //wp_register_script( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/js/wpte.js', array('jquery'), WPTE_ADDON_MAIN_CLASS::WPTE_ADDON_VERSION );
+
+	    wp_register_style( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/css/wpte.css', null, $var );
+	    wp_register_script( 'wpte-addon', WPTE_ADDON_PLUGIN_URL . 'assets/js/wpte.js', array('jquery'), $var );
 
 	    wp_localize_script( 'wpte-addon', 'wpte_data',
 	    	array(
@@ -277,6 +282,18 @@ function move_variation_price() {
     add_action( 'woocommerce_before_variations_form', 'woocommerce_single_variation', 10 );
 }
 add_action( 'woocommerce_before_add_to_cart_form', 'move_variation_price' );
+
+function single_variation_price(){
+	?>
+<div class="woocommerce-variation single_variation_price">
+	<div class="woocommerce-variation-price">
+		<span class="price"><span class="woocommerce-Price-amount amount"></span></span>
+	</div>
+
+</div>
+	<?php
+}
+add_action( 'woocommerce_before_variations_form', 'single_variation_price', 10 );
 
 add_filter( 'woocommerce_dropdown_variation_attribute_options_html', 'filter_dropdown_option_html', 12, 2 );
 function filter_dropdown_option_html( $html, $args ) {

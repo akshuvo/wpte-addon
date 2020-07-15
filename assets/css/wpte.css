@@ -126,7 +126,7 @@ span.wpte-plus {
     text-align: center;
 }
 
-.wpte-product-wrap .woocommerce-variation.single_variation {
+.wpte-product-wrap .woocommerce-variation.single_variation_price {
     height: 100px;
     width: 103px;
     border: 2px solid #252525;
