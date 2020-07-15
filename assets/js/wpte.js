@@ -54,7 +54,7 @@ jQuery(function($){
 
 
 
-				var optionDiv = $(this).find('.wpte-qty select#pack option');
+				var optionDiv = $(this).find('form.variations_form').find('select[name="attribute_pa_pack"] option');
 
 				var formData = $(this).find('form.variations_form').attr('data-product_variations');
 
@@ -64,9 +64,11 @@ jQuery(function($){
 
 					var initPrice = formDataobj[0].display_regular_price;
 
-					$(this).find('.single_variation_price .woocommerce-variation-price').text( wpte_data.wc_currency+initPrice );
+					var varTotal = (inputQty*initPrice);
 
-					//console.log('has single variation');
+					$(this).find('.single_variation_price .woocommerce-variation-price').text( wpte_data.wc_currency+varTotal.toFixed(2) );
+
+					//console.log('has single variation', initPrice);
 
 				} else {
 					var varTotal = (inputQty*varPrice);
